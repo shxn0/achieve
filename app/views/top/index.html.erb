@@ -1,0 +1,71 @@
+
+<%#
+<header>    
+  <ul>
+    <li><a href="#">Archieve</a></li>
+    <li><a href="#">トップページ</a></li>
+    <li><a href="#">問い合わせ</a></li>
+    <li><a href="#">ブログ</a></li>
+  </ul>
+</header>        
+%>
+
+  <section class="main-header">
+    <p id="notice"><%=notice%></p>
+    <img src="<%= asset_path "achieve.png" %>">
+  </section>
+
+  <section class="about">
+    <h1>About Achieve</h1>
+      <p>
+        Achiveは受講生のために作成された教材用アプリです。</br>
+                Achiveを作り終えることでSecond Teamに参加するための力を身につけることができます。
+      </p>
+      <p>
+        Achiveを一言で表すと、タスク管理用アプリです。<br>
+        チームメンバーがいまどのようなタスクを行っているかリアルタイムで把握することができます。
+      </p>
+  </section>
+
+  <section class="function-container-fluid">
+    <div class="row">
+    <h2>Function</h2>
+      <div class="function-images">
+        <div class="col-md-3 col-sm-6">
+         <div class="function-image">
+          <img src="<%= asset_path "key.png" %>">
+          <p>ログイン機能</p>
+         </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+         <div class="function-image">
+          <img src="<%= asset_path "mails.png" %>">
+          <p>メール送信機能</p>
+         </div>
+        </div>
+        <div class= "col-md-3 col-sm-6">
+         <div class="function-image">
+          <img src="<%= asset_path "girls.png" %>">
+          <p>友達つながり機能</p>
+         </div>
+        </div>
+        <div class= "col-md-3 col-sm-6">
+         <div class="function-image">
+          <img src="<%= asset_path "comment.png" %>">
+          <p>コメント投稿機能</p>
+         </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div id= "page-top-btn" class="page-top-btn">
+  <p><a class= "move-top-btn" id= "move-top-btn">▲</a></p>
+</div>
+
+<%#
+<footer>
+  <p>運営会社DIVE INTO CODE株式会社</p>
+  <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+</footer>
+%>
