@@ -7,7 +7,7 @@ ready = ->
       element.fadeIn() if !visible
     else
       element.fadeOut()
-  $(document).on 'click', '#page-top-btn', ->
+  $(document).on 'click', '#move-top-btn', ->
     $('html, body').animate({ scrollTop: 0 }, 'slow')
 
   $(window).scroll ->
