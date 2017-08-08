@@ -10,15 +10,6 @@
 <body>
 
   <header>
-    <!--
-    <ul>
-      <%# <li><%= link_to"Archieve",root_path %></li>
-      <%# <li><%= link_to "トップページ",root_path %></li>
-      <%# <li><%= link_to "問い合わせ", new_contact_path %></li>
-      <%# <li><%= link_to "ブログ", blogs_path %></li>
-    </ul>
-    -->
-    
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -42,13 +33,17 @@
                 <li><%= link_to"ブログ", blogs_path %></li>
               </ul>
             </li>
+            <% if user_signed_in? %>
+            <li><%= link_to "マイページ", edit_user_registration_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+            <li><%= link_to "サインアップ", new_user_registration_path %></li>
+            <% end %>
           </ul>
-        </div>
-      </div>
+        </div> <%# collapse navbar-collapse %>
+      </div> <%# container %>
     </nav>
-    
-    
-    
   </header>   
 
 <%= yield %>
