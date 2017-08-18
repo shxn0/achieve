@@ -12,3 +12,13 @@
   User.create!(email: email, password: password, password_confirmation: password,
   )
 end
+
+n = 1
+while n <= 100
+  Blog.create(
+    title: "aaa",
+    content: "contentbbb",
+    user_id: n
+    )
+    n = n + 1
+end
