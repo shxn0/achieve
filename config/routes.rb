@@ -2,22 +2,25 @@ Rails.application.routes.draw do
 
   devise_for :users
   #resources :blogs, only:[:index,:new,:create,:edit,:update,:destroy] do
-  
+
   resources :blogs, except:[:show] do
     collection do
       post :confirm
     end
   end
-      
+
   resources :contacts, only:[:new,:create] do
-    collection do 
+    collection do
       post :confirm
     end
   end
-    
+
   root'top#index'
-  
-  
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at:"/letter_opener"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay orailsut with "rake routes".
 
