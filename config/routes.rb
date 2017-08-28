@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at:"/letter_opener"
   end
 
+  resources :poems, only:[:index, :show]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay orailsut with "rake routes".
 

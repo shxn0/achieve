@@ -63,3 +63,5 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
 end
+
+gem 'activeresource'

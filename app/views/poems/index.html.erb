@@ -1,0 +1,17 @@
+<div class = "container">
+  <div class ="wrapper col-md-8 col-md-offset-2">
+  <h1>The List of Poems</h1>
+  <% @poems.each do |poem| %>
+    <div class="row">
+      <p><strong>Title:</strong>
+      <%= poem.title %>
+      </p>
+      <p><strong>Content:</strong>
+      <%= poem.content %>
+      </p>
+      <%= link_to "Details",poem_path %>
+    </div>
+  <% end %>
+
+  </div>
+</div>
