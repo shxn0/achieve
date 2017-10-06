@@ -7,3 +7,7 @@ module BlogsHelper
     end
   end
 end
+
+
+#confirm_blogs POST     /blogs/confirm(.:format)                blogs#confirm
+#blog PATCH    /blogs/:id(.:format)                    blogs#update
