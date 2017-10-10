@@ -1,0 +1,19 @@
+<H1>comments#edit</H1>
+
+<div class= "container">
+  <div class= "col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+
+  <% if @comment.errors.any? %>
+    <div id= "error_explanation" >
+    <h2> <%= @comment.errors.count %>件のエラーがあります</h2>
+      <ul>
+        <%= @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render partial: 'comments/form', locals: {comment: @comment, blog: @blog } %>
+  </div>
+</div>
