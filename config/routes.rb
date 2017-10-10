@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   #resources :blogs, only:[:index,:new,:create,:edit,:update,:destroy] do
 
+=begin
   resources :blogs do
     collection do
       post :confirm
     end
   end
+=end
 
   resources :blogs do
     resources :comments
