@@ -10,6 +10,20 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
 
+  #relationshipsと定義を命名して外部キーにfollower_idを設定
+  has_many :relationships, foreign_key:"follower_id", dependent: :destroy
+
+  #reverse_relationshipsと定義を命名して外部キーにfollowed_idを設定
+  #class_name: "Relationship"とすることで、Relationshipモデルに対して、アソシエーションを定義しています。
+  has_many :reverse_relationships, foreign_key:"followed_id", class_name:"Relationship", dependent: :destroy
+
+  #UserモデルがRelationshipモデルを介して複数のUserを所持することを定義する
+  #user.followed_usersやuser.followersでデータ取得できる
+  #followed_userは自分がフォローしているひとたち（≒ followings）※ここでは自分にフォローされているという解釈
+  #follwersは自分のフォロワー（≒自分をフォローしている人たち）
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
+
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
@@ -57,6 +71,18 @@ class User < ActiveRecord::Base
       params.delete :current_password
       update_without_password(params, *options)
     end
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
   end
 
 end

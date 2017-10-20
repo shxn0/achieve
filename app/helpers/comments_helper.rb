@@ -1,9 +1,6 @@
 
 module CommentsHelper
 
-    
-
-
 =begin
   def comments_choose_new_or_edit
     if action_name == "show"
@@ -13,4 +10,6 @@ module CommentsHelper
     end
   end
 =end
+
+
 end
