@@ -7,7 +7,10 @@
         <%= link_to user_path(user) do %>
           <h4><strong><%= user.name %></strong></h4>
         <% end %>
-      <%= render 'follow_form', user: user %>
+        <div class="item">
+          <%= link_to "メッセージ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method:"post", class: "btn btn-default"%>
+        </div>
+        <%= render partial: "follow_form", locals: {user: user} if signed_in? %>
       </div>
     <% end %>
   <% end %>

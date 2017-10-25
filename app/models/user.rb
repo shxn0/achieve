@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   #user.followed_usersやuser.followersでデータ取得できる
   #followed_userは自分がフォローしているひとたち（≒ followings）※ここでは自分にフォローされているという解釈
   #follwersは自分のフォロワー（≒自分をフォローしている人たち）
+  #外部キーfollower_idを参照してfollowed_idを取得する。そのfollowed_idを取得するためsouce: :followedを取得する流れになる（relathionshipsの流れ）
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
