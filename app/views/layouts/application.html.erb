@@ -8,6 +8,27 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+  <% if user_signed_in? %>
+  <script>
+  var pusher = new Pusher('<%= ENV["PUSHER_KEY"]%>',{
+    encrypted: true,
+    cluster: 'ap1'
+  });
+
+//var channel = pusher.subscribe('test_channel');で、test_channelに参加して、
+//channel.bind('comment_created'で、comment_createdeventのdataを取り出しています。
+
+  var channel = pusher.subscribe('user_<%= current_user.id %>_channel');
+  channel.bind('comment_created', function(data){
+    alert(data.message);
+  });
+
+  </script>
+  <% end %>
+
 </head>
 <body>
 
