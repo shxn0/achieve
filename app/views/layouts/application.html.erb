@@ -26,10 +26,16 @@
     alert(data.message);
   });
 
+  channel.bind('notification_created', function(data){
+    $('#unread_counts').html(data.unread_counts);
+  });
+
   </script>
   <% end %>
 
 </head>
+
+
 <body>
 
   <header>
@@ -58,13 +64,20 @@
               </ul>
             </li>
             <% if user_signed_in? %>
-            <li><%= link_to "My page", edit_user_registration_path %></li>
-            <li><%= link_to "User list", users_path if user_signed_in? %>
-            </li>
-            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "My page", edit_user_registration_path %></li>
+              <li><%= link_to "User list", users_path if user_signed_in? %>
+              </li>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to notifications_index_path do %></li>
+              <i class="fa fa-bell fa-lg">
+                <% if @notifications_count != 0 %>
+                  <span id="unread_counts"><%= @notifications_count %></span>
+                  <% end %>
+              </i>
+              <% end %>
             <% else %>
-            <li><%= link_to "Log in", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Log in", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>
           </ul>
         </div> <%# collapse navbar-collapse %>
