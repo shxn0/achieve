@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
   }
 
   config.fog_public = true
-  config.fog_attributes = {'Cache-Control' => 'public, maz-age=86400'}
+  config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
 
   case Rails.env
   when 'production'
