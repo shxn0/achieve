@@ -25,6 +25,9 @@
     <% end %>
   </div>
 
+  <%# html:{}はform_forにクラスをつけたい時の書き方でparameterを送る際に名前をつけるイメージ？%>
+  <%# form_for ([@conversation, @message]), html:{class:"ui reply form"} do |f| %>
+  <%# conversationはmessageと入れ子になっているから配列形式で引数を与える%>
   <%= form_for [@conversation, @message], html:{class:"ui reply form"} do |f| %>
     <div class="field">
       <%= f.text_area :body, class:"form-control" %>

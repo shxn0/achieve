@@ -80,3 +80,5 @@ gem 'mini_magick'
 gem 'pusher'
 
 gem 'rails_12factor', group: :production
+
+gem 'fog'
