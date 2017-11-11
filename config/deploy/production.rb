@@ -1,6 +1,6 @@
 
  server '13.112.233.132', user:'app', roles: %w{app db web}
- set :ssh_options, keys:'/home/app/.ssh/id_rsa'
+ set :ssh_options, keys:'/Users/shin/.ssh/id_rsa'
 
 
 
