@@ -2,7 +2,7 @@
 lock '3.6.0'
 
   set :application, 'achieve'
-  set :repo_url, 'git@example.com/shxn0/achieve.git'
+  set :repo_url, 'https://github.com/shxn0/achieve'
 
   set :branch, ENV['BRANCH']||'master'
   set :deploy_to, '/var/www/achieve'
