@@ -88,10 +88,8 @@ gem 'unicorn'
 
 gem 'therubyracer', platforms: :ruby
 
-group :development, :test do
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-end
