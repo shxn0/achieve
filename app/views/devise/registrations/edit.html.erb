@@ -15,28 +15,32 @@
         <% f.text_field :name, class:"form-control" %>
       </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+      <% if @user.provider.blank? %>
 
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control"%>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
-      </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-      </div>
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control"%>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
 
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off", class:"form-control" %>
-      </div>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off", class:"form-control" %>
+        </div>
+
+      <% end %>
 
       <div class ="field">
         <%= profile_img(@user) if profile_img(@user)%>
@@ -47,7 +51,8 @@
       <div class="actions">
         <%= f.submit "Update", class: "btn btn-prymary btn-block" %>
       </div>
-    <% end %>
+
+        <% end %>
 
     <h3>Cancel my account</h3>
 
